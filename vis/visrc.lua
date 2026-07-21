@@ -13,7 +13,7 @@ plug.init({
     { url = 'https://git.sr.ht/~mcepl/vis-fzf-open' },
 })
 
-plugin_vis_open = require('plugins/vis-fzf-open')
+local plugin_vis_open = require('plugins/vis-fzf-open')
 plugin_vis_open.fzf_path = (
     "FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g \"\"' fzf"
 )
@@ -21,4 +21,6 @@ plugin_vis_open.fzf_path = (
 vis.events.subscribe(vis.events.WIN_OPEN, function(win)
     vis:command('set autoindent on')
     vis:command('map! normal <C-p> :fzf<Enter>')
+    vis:command("set tabwidth 4")
+    vis:command("set expandtab off")
 end)
